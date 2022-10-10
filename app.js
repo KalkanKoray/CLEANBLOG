@@ -6,6 +6,7 @@ const ejs = require('ejs');
 const path = require('path');
 //LOCAL MODULES
 const Blog = require('./models/Blog');
+const { findById } = require('./models/Blog');
 //CONNECT DB
 mongoose.connect(
     'mongodb://koray:Cansu2580@185.224.139.239:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
@@ -40,9 +41,15 @@ app.get('/about', (req, res) => {
 app.get('/add_post', (req, res) => {
     res.render('add_post');
 });
-app.get('/post', (req, res) => {
+/*app.get('/post', (req, res) => {
     res.render('post');
-});
+});*/
+app.get('/blogs/:id', async (req, res) => {
+    const blog = await Blog.findById(req.params.id)
+    res.render('post', {
+        blog
+    })
+})
 app.post('/blogs', async (req, res) => {
     await Blog.create(req.body);
     res.redirect('/');
