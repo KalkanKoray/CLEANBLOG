@@ -14,24 +14,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form method="post" action="/blogs" novalidate>
+        <form method="POST" action="/blogs/<%= blog._id %>?_method=PUT" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Title</label>
-              <input type="text" name="title" class="form-control" placeholder="Add New Blog Title" id="name" required data-validation-required-message="Please enter your name.">
+              <label>Update The Blog Title</label>
+              <input type="text" name="title" value="<%= blog.title %>"class="form-control" placeholder="Update The Blog Title" id="name" required data-validation-required-message="Please enter your name.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Detail</label>
-              <textarea type="text" name="detail" rows="5" class="form-control" placeholder="Add New Blog Detail" id="message" required data-validation-required-message="Please enter a message."></textarea>
+              <label>Update The Blog Detail</label>
+              <textarea type="text" name="detail" rows="5" class="form-control" placeholder="Update The Blog Detail" id="message" required data-validation-required-message="Please enter a message."><%= blog.detail %></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
           <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
         </form>
       </div>
     </div>

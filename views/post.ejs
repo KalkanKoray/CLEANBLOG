@@ -14,12 +14,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          
           <h1 class="section-heading"><%= blog.title %></h1>
           <h2 class="section-heading"><%= blog.detail %></h2>
           <h3 class="section-heading"><%= blog.dateCreated %></h3>
 
-          
+          <a href="/blogs/edit/<%= blog._id %>" type="update" class="btn btn-primary" id="sendMessageButton">Update Details</a>
+          <a href="/blogs/<%= blog._id %>?_method=DELETE" type="delete" class="btn btn-primary" id="sendMessageButton"
+            onclick="return confirm ('ARE YOU SURE?')">Delete Blog</a>
+        
            </div>
       </div>
     </div>
