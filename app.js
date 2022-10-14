@@ -8,12 +8,10 @@ const blogController = require('./controllers/blogControllers')
 const pageController = require('./controllers/pageControllers')
 
 //CONNECT DB
-mongoose.connect(
-    'mongodb://koray:Cansu2580@185.224.139.239:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }
+mongoose.connect('mongodb+srv://koraykalkan:Gulce2580@cluster0.shqbaww.mongodb.net/cleanblog-db?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}
 );
 //express uygulamada kullanıma alınıyor
 const app = express();
@@ -42,7 +40,7 @@ app.get('/add_post', pageController.getAddPage);
 app.get('/blogs/edit/:id', pageController.getEditPage);
 
 //EXPRESS SERVER
-port = 3000;
+port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Sunucu ${port} port da başlatildi.`);
 });
